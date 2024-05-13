@@ -1,0 +1,34 @@
+spring:
+  #datasource:
+ #   url: jdbc:postgresql://localhost:5433/manager
+ #   username: postgres
+ #   password: qwe
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8082/realms/magazine
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            client-id: manager-app
+            client-secret: 4BO3uhaN5pGF3j6DtpuRjF6q7xzcud3K
+            scope:
+              - openid
+              - view_catalogue
+              - edit_catalogue
+              - microprofile-jwt
+  datasource:
+    url: jdbc:postgresql://localhost:5433/manager
+    username: postgres
+    password: qwe
+
+
+example:
+  services:
+    catalogue:
+      uri: http://localhost:8081
+      registration-id: keycloak
+server:
+  port: 8083
